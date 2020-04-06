@@ -19,6 +19,9 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load theme.
 antigen theme romkatv/powerlevel10k
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # Tell Antigen that you're done.
 antigen apply
