@@ -8,7 +8,10 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle docker
 antigen bundle colorize # ccat/cless command (cat with color)
-# antigen bundle autojump 
+
+# Autojump
+source /usr/share/autojump/autojump.sh
+antigen bundle autojump # j, jc, jo, jco
 
 # Load bundles from external repos.
 antigen bundle zsh-users/zsh-autosuggestions
@@ -42,6 +45,7 @@ alias path='echo -e ${PATH//:/\\n}' # Print each PATH entry on a separate line
 # DEV Commands
 alias putty-s0="sudo putty /dev/ttyS0 -serial -sercfg 115200,8,n,1,N"
 alias ws="cd ~/ws/"
+alias dt="code ~/ws/dt-client"
 
 # ls Commands
 alias ols="ls" # Backup, standard ls
