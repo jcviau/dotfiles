@@ -22,9 +22,16 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load theme.
 antigen theme romkatv/powerlevel10k
-POWERLEVEL9K_DISABLE_RPROMPT=true
+
+# Customize theme
+POWERLEVEL9K_MODE=nerdfont-complete
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
+POWERLEVEL9K_STATUS_OK=false
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 
 # Tell Antigen that you're done.
 antigen apply
@@ -43,9 +50,9 @@ alias remove="sudo apt-get remove --purge"
 alias path='echo -e ${PATH//:/\\n}' # Print each PATH entry on a separate line
 
 # DEV Commands
-alias putty-s0="sudo putty /dev/ttyS0 -serial -sercfg 115200,8,n,1,N"
+alias apps="cd ~/applications/"
 alias ws="cd ~/ws/"
-alias dt="code ~/ws/dt-client"
+alias dotfiles="cd ~/ws/dotfiles"
 
 # ls Commands
 alias ols="ls" # Backup, standard ls
@@ -58,6 +65,11 @@ alias llt="ll -T" # Contains sub directory (tree)
 alias ocat="cat" # Backup, standard cat
 alias cat="cless"
 
+# Open VS Code for a specific feature
+function code-ui() { code ~/ws/$1/ui }
+function code-ingress() { code ~/ws/$1/ingress }
+function code-service() { code ~/ws/$1/service }
+
 # Search for files and page it
 function search() { find . -iname "*$@*" | less; }
 
@@ -66,3 +78,4 @@ function searchps() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 
 # Search process that use a port
 function searchport() { lsof -i tcp:$1 }
+
