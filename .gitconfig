@@ -1,5 +1,4 @@
 [core]
-    editor = code --wait --user-data-dir="~/.vscode-git"
     # Convert CRLF to LF on commit but not the other way around
     autocrlf = input
     # Improve performance: https://news.ycombinator.com/item?id=11388479

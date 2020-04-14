@@ -1,0 +1,5 @@
+[user]
+  name = Jean-Claude Viau
+  email = jean-claude.viau@exfo.com
+[core]
+  editor = code --wait --user-data-dir=/home/jeavia1/.vscode-git
