@@ -1,5 +1,5 @@
 [core]
-    editor = code --wait
+    editor = code --wait --user-data-dir="~/.vscode-git"
     # Convert CRLF to LF on commit but not the other way around
     autocrlf = input
     # Improve performance: https://news.ycombinator.com/item?id=11388479
@@ -42,4 +42,4 @@
     lineNumber = true
 [include]
     # Contains my user settings (username, email, github account)
-    path = ~/.gitconfig.user
+    path = .gitconfig.user
