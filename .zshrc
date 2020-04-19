@@ -21,7 +21,7 @@ forgit_diff=gdiff
 forgit_add=gadd
 forgit_reset_head=greset-head
 forgit_ignore=gignore
-forgit_restore=gcheckout
+forgit_restore=grestore
 forgit_clean=gclean
 forgit_stash_show=gstash-show
 
@@ -36,13 +36,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme romkatv/powerlevel10k
 
 # Customize theme
-POWERLEVEL9K_MODE=nerdfont-complete
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-POWERLEVEL9K_STATUS_OK=false
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+source ~/zsh/p10k.zsh
 
 # Tell Antigen that you're done.
 antigen apply
@@ -50,47 +44,14 @@ antigen apply
 # Add alias based on fzf (interactive)
 source ~/zsh/fzf-alias.zsh
 
-# Add alias specific for my setup 
+# Add alias specific for my setup
 source ~/zsh/mysetup-alias.zsh
+
+# Add alias (e.g. improved ls, cat, apt, ...)
+source ~/zsh/alias.zsh
 
 # Default editor
 export EDITOR='code'
-alias -s {yml,yaml,md,js,ts,html,css,scss,json,xml,sh}=code
-alias -s {txt,.gitconfig,.zshrc}=gedit
+alias -s {yml,yaml,md,js,ts,html,css,scss,json,xml,sh,.zshrc,.gitconfig,.zsh}=code
+alias -s {txt,text}=gedit
 
-# Global
-alias -g G='| grep -i --color=auto --exclude-dir={.git}'
-
-# apt commands
-alias install="sudo apt-get install -y"
-alias remove="sudo apt-get --purge autoremove"
-alias update="sudo apt autoclean && sudo apt autoremove && sudo apt-get update -y && sudo apt-get dist-upgrade -y"
-alias clear-cache="sudo apt-get clean"
-
-# general commands
-alias cfg='code --wait ~/.zshrc && source ~/.zshrc && echo Zsh config edited and reloaded. && exec zsh' # source ~/.zshrc 
-alias sudo='sudo ' # If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
-alias path='echo -e ${PATH//:/\\n}' # Print each PATH entry on a separate line
-alias untar='tar -zxvf'
-alias ping='ping -c 5'
-alias mv="mv -v" 
-alias rm="rm -vI"
-alias cp="cp -v" 
-alias groot='cd git rev-parse --show-toplevel' # cd to the root of a git repo
-
-# ls Commands
-alias ls="exa -a --group-directories-first -s=name" # Grid, multiple per line
-alias ll="exa -l -a --group-directories-first -s=name -h --git --icons" # Detailed list, 1 per line with git status
-alias lst="ls -T" # Contains sub directory (tree)
-alias llt="ll -T" # Contains sub directory (tree)
-
-# cat Commands
-alias cat="cless"
-
-function mkcd() { mkdir -p "$1"; cd "$1" }
-
-# Search for files and page it
-function search() { find . -iname "*$@*" | less; }
-
-# Search process by name and highlight
-function searchps() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }

@@ -1,3 +1,4 @@
+
 # Select a docker container to attach
 function dattach() {
   local cid
@@ -23,11 +24,19 @@ function dstop() {
 }
 
 # Select a docker container to remove
-function dremove() {
+function drm() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
 
   [ -n "$cid" ] && docker rm "$cid" --force
+}
+
+# Select a docker container to remove
+function drmi() {
+  local cid
+  cid=$(docker image ls | sed 1d | fzf -q "$3" | awk '{print $3}')
+
+  [ -n "$cid" ] && docker rmi "$cid" --force
 }
 
 # Select a docker container to start and attach
@@ -53,7 +62,7 @@ function chistory() {
 }
 
 # fkill - kill processes - list only the ones you can kill. Modified the earlier script.
-pskill() {
+function pskill() {
     local pid 
     if [ "$UID" != "0" ]; then
         pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
