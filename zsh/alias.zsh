@@ -1,6 +1,3 @@
-# Global
-alias -g G='| grep -i --color=auto --exclude-dir={.git}'
-
 # apt commands
 alias install="sudo apt-get install -y"
 alias remove="sudo apt-get --purge autoremove"
@@ -26,14 +23,3 @@ alias llt="ll -T" # Contains sub directory (tree)
 
 # cat Commands
 alias cat="cless"
-
-function mkcd() { mkdir -p "$1"; cd "$1" }
-
-# Search for files and page it
-function search() { find . -iname "*$@*" | less; }
-
-# Search process by name and highlight
-function searchps() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
-
-# Search wich process use a port
-function searchport() { sudo netstat -tulpn | grep "$1" }

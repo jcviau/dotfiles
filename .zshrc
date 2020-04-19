@@ -44,14 +44,18 @@ antigen apply
 # Add alias based on fzf (interactive)
 source ~/zsh/fzf-alias.zsh
 
-# Add alias specific for my setup
+# Add alias/function specific for my setup
 source ~/zsh/mysetup-alias.zsh
+source ~/zsh/mysetup-function.zsh
 
-# Add alias (e.g. improved ls, cat, apt, ...)
+# Add alias/function (e.g. improved ls, cat, apt, ...)
 source ~/zsh/alias.zsh
+source ~/zsh/function.zsh
+
+# Global
+alias -g G='| grep -i --color=auto --exclude-dir={.git}'
 
 # Default editor
 export EDITOR='code'
 alias -s {yml,yaml,md,js,ts,html,css,scss,json,xml,sh,.zshrc,.gitconfig,.zsh}=code
 alias -s {txt,text}=gedit
-
