@@ -2,7 +2,7 @@
 # Select a docker container to attach
 function dattach() {
   local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+  cid=$(docker ps | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
   [ -n "$cid" ] && docker attach "$cid"
 }
@@ -10,7 +10,7 @@ function dattach() {
 # Select a docker container to start and attach
 function dstart() {
   local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+  cid=$(docker ps -a -f "status=exited" -f "status=created" | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
   [ -n "$cid" ] && docker start "$cid"
 }
@@ -31,7 +31,7 @@ function drm() {
   [ -n "$cid" ] && docker rm "$cid" --force
 }
 
-# Select a docker container to remove
+# Select a docker image to remove
 function drmi() {
   local cid
   cid=$(docker image ls | sed 1d | fzf -q "$3" | awk '{print $3}')
@@ -39,10 +39,10 @@ function drmi() {
   [ -n "$cid" ] && docker rmi "$cid" --force
 }
 
-# Select a docker container to start and attach
+# Select a docker container to run a bash and attach
 function dbash() {
   local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+  cid=$(docker ps | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
   [ -n "$cid" ] && docker exec -it "$cid" /bin/bash
 }
