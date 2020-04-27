@@ -57,5 +57,5 @@ alias -g G='| grep -i --color=auto --exclude-dir={.git}'
 
 # Default editor
 export EDITOR='code'
-alias -s {yml,yaml,md,js,ts,html,css,scss,json,xml,sh,.zshrc,.gitconfig,.zsh}=code
+alias -s {yml,yaml,md,js,ts,html,css,scss,json,xml,.zshrc,.gitconfig,.zsh}=code
 alias -s {txt,text}=gedit
