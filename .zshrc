@@ -44,9 +44,6 @@ antigen apply
 # Add alias based on fzf (interactive): docker, kill, history
 source ~/zsh/fzf-alias.zsh
 
-# Add alias for git
-source ~/zsh/git-alias.zsh
-
 # Add alias/function specific for my setup
 source ~/zsh/mysetup-alias.zsh
 source ~/zsh/mysetup-function.zsh
