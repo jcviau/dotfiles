@@ -13,7 +13,6 @@ alias ping='ping -c 5'
 alias mv="mv -v" 
 alias rm="rm -v"
 alias cp="cp -v" 
-alias groot='\cd $(git rev-parse --show-toplevel)' # cd to the root of a git repo
 
 # ls Commands
 alias ls="exa -a --group-directories-first -s=name" # Grid, multiple per line
@@ -23,3 +22,6 @@ alias llt="ll -T" # Contains sub directory (tree)
 
 # cat Commands
 alias cat="cless"
+
+# docker
+alias dprune="docker system prune --all --force --volumes"

@@ -1,4 +1,4 @@
-source ~/zsh/antigen.zsh
+source ~/antigen.zsh
 
 # Load oh-my-zsh library.
 export ZSH="$HOME/.oh-my-zsh"
@@ -41,8 +41,11 @@ source ~/zsh/p10k.zsh
 # Tell Antigen that you're done.
 antigen apply
 
-# Add alias based on fzf (interactive)
+# Add alias based on fzf (interactive): docker, kill, history
 source ~/zsh/fzf-alias.zsh
+
+# Add alias for git
+source ~/zsh/git-alias.zsh
 
 # Add alias/function specific for my setup
 source ~/zsh/mysetup-alias.zsh
