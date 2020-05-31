@@ -23,5 +23,5 @@ alias llt="ll -T" # Contains sub directory (tree)
 # cat Commands
 alias cat="cless"
 
-# docker
+# dev (docker)
 alias dprune="docker system prune --all --force --volumes"
