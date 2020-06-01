@@ -32,6 +32,8 @@
 [pull]
     # Force a rebase on pull to avoid merge in the history
     rebase = true
+[merge]
+    ff = only    
 [rebase]
     # Good practice to squash your commit when rebasing a feature (cleanup)
     autosquash = true
