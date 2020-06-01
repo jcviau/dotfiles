@@ -15,6 +15,7 @@
 [difftool]
     prompt = false
 [merge]
+    ff = only 
     tool = meld
     conflictstyle = diff3
 [mergetool "meld"]
@@ -31,9 +32,7 @@
     prune = true
 [pull]
     # Force a rebase on pull to avoid merge in the history
-    rebase = true
-[merge]
-    ff = only    
+    rebase = true  
 [rebase]
     # Good practice to squash your commit when rebasing a feature (cleanup)
     autosquash = true
