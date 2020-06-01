@@ -1,7 +1,14 @@
-#!/usr/bin/env bash
-  
+#!/usr/bin/env zsh
+
+echo $(tput setaf 2)Updating master$(tput sgr0)
 git checkout master
 git pull
-gcheckout
+
+echo -e "\n$(tput setaf 2)Selecting task branch$(tput sgr0)"
+git for-each-ref --format='%(refname:short)' refs/heads | grep "task-" | fzf | xargs git checkout
+
+echo -e "\n$(tput setaf 2)Rebasing $(git rev-parse --abbrev-ref HEAD) with master$(tput sgr0)"
 git rebase -i master
-git log
+
+echo -e "\n$(tput setaf 2)Showing Logs$(tput sgr0)"
+git --no-pager log --pretty=oneline --abbrev-commit --color --graph  | tail -n 10

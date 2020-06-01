@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
+echo "$(tput setaf 2)Updating master$(tput sgr0)"
 git checkout master
 git pull
+
+echo -e "\n$(tput setaf 2)Creating your branch $1$(tput sgr0)"
 git checkout -b task-$1 master
+
+echo -e "\n$(tput setaf 2)Pushing your branch $1 to remote$(tput sgr0)"
 git push -u origin task-$1
-git branch -v
+
+echo -e "\n$(tput setaf 2)List branches$(tput sgr0)"
+git --no-pager branch -v

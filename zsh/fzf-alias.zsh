@@ -58,8 +58,6 @@ function idbash() {
   [ -n "$cid" ] && docker exec -it "$cid" /bin/bash
 }
 
-
-
 # Select a command from history
 function ihistory() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
