@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+
+git task-rebase
+
+currentBranch=$(git rev-parse --abbrev-ref HEAD)
+baseCommit=$(git merge-base $currentBranch master)
+echo -e "\n$(tput setaf 2)Squashing the following commits:$(tput sgr0)"
+printf "$(git --no-pager log --format='%H %an - %s' $baseCommit..$currentBranch)\n\n"
+
+git reset --soft $baseCommit &> /dev/null
+git commit -m "<type*>(<service|ui|ingress>): <subject>
+
+DESCRIPTION
+<use the imperative, present tense: \"change\" not \"changed\" nor \"changes\". 
+The body should include the motivation for the change and contrast this with previous behavior.>
+
+TEST
+<describe how you tested your changes>
+
+REVIEWER
+<name of the reviewer>
+
+*Type should be one of the following:
+- env: Changes that affect the development environment (scripts, devcontainer, docker-compose)
+- deps: Changes in the external dependencies (packages)
+- ci: Changes to our CI configuration files and scripts (GitLab)
+- docs: Documentation only changes
+- feat: A new feature
+- fix: A bug fix
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- style: Changes that do not affect the meaning of the code (formatting, missing semi-colons)
+- test: Adding missing tests or correcting existing tests (unit test, integration test, e2e)
+" 1> /dev/null
+
+echo -e "$(tput setaf 2)Modifying commit message$(tput sgr0)"
+git commit --amend
+
+mrTitle=$(git show-branch --no-name HEAD)
+echo -e "\n$(tput setaf 2)Creating MR: $mrTitle$(tput sgr0)"
+
+git push --force-with-lease \
+  -o merge_request.create \
+  -o merge_request.target="master" \
+  -o merge_request.merge_when_pipeline_succeeds \
+  -o merge_request.remove_source_branch

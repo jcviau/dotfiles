@@ -12,4 +12,3 @@ git rebase -i master
 
 echo -e "\n$(tput setaf 2)Showing Logs$(tput sgr0)"
 git --no-pager log --pretty=oneline --abbrev-commit --color --graph --all --decorate | head -n 15 
-
