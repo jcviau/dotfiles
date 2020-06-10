@@ -1,0 +1,19 @@
+{
+    "terminal.integrated.fontFamily":"RobotoMono Nerd Font",
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "terminal.integrated.detectLocale": "off",
+
+    "dotfiles.repository": "jcviau/dotfiles",
+    
+    "oneDarkPro.editorTheme": "vscode",
+
+    "typescript.updateImportsOnFileMove.enabled": "always",
+
+    "liveshare.allowGuestDebugControl": true,
+    "liveshare.allowGuestTaskControl": true,
+    "liveshare.diagnosticLogging": true,
+    "liveshare.languages.allowGuestCommandControl": true,
+    "liveshare.audio.startCallOnShare": true,
+    "liveshare.allowInvites": "all",
+    "liveshare.populateGitCoAuthors": "never"
+}

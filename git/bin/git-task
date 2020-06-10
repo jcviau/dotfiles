@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 echo "$(tput setaf 2)Updating master$(tput sgr0)"
 git checkout master
 git pull

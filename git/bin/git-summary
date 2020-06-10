@@ -2,7 +2,7 @@
 
 # Source : https://github.com/tj/git-extras/blob/master/bin/git-summary
 
-\cd $(git rev-parse --show-toplevel) || { echo "Can't cd to top level directory";exit 1; }
+cd $(git rev-parse --show-toplevel) || { echo "Can't cd to top level directory";exit 1; }
 
 SUMMARY_BY_LINE=
 DEDUP_BY_EMAIL=

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ ! "$(docker ps -a | grep dashboard)" ];
 then
   echo 'Creating and starting the docker dashboard.'

@@ -1,0 +1,49 @@
+- clean: ['~']
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+- shell:
+  - [git submodule update --init --recursive, Updating submodules]
+  - command: ./bin/dependency-install.sh
+    stdin: true
+    stdout: true
+    stderr: true        
+- link:
+    # Git Config
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitconfig.user: mysetup/.gitconfig.user
+    # Alias and functions
+    ~/shell/.alias.sh: shell/.alias.sh
+    ~/shell/.functions.sh: shell/.functions.sh
+    ~/shell/.docker-alias.sh: docker/.alias.sh
+    ~/shell/.docker-functions.sh: docker/.functions.sh
+    ~/shell/.git-alias.sh: git/.alias.sh
+    ~/shell/.git-functions.sh: git/.functions.sh
+    ~/shell/.mysetup-alias.sh: mysetup/.alias.sh
+    # VS Code
+    ~/.config/Code/User/settings.json: vscode/settings.json
+    # ZSH
+    ~/.zshrc: zsh/.zshrc
+    ~/zsh/.plugins.sh: zsh/.plugins.sh
+    ~/zsh/.p10k-theme-config.sh: zsh/.p10k-theme-config.sh  
+    ~/zsh/custom/plugins: zsh/custom/plugins
+    # BASH
+    ~/.bash_aliases: bash/.bash_aliases
+    # .local/bin
+    ~/.local/bin/diff-so-fancy: git/diff-so-fancy/diff-so-fancy
+    ~/.local/bin/docker-dash: docker/bin/docker-dash
+    ~/.local/bin/putty-s0: mysetup/bin/putty-s0
+    ~/.local/bin/git-browse: git/bin/git-browse
+    ~/.local/bin/git-effort: git/bin/git-effort
+    ~/.local/bin/git-icheckout: git/bin/git-icheckout
+    ~/.local/bin/git-summary: git/bin/git-summary
+    ~/.local/bin/git-task: git/bin/git-task
+    ~/.local/bin/git-task-mr: git/bin/git-task-mr
+    ~/.local/bin/git-task-rebase: git/bin/git-task-rebase
+- shell:
+  - command: echo "\nzsh is not the default shell, you should execute this command chsh -s "$(which zsh)""
+    stdin: true
+    stdout: true
+    stderr: true         

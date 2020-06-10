@@ -1,0 +1,7 @@
+[user]
+  name = Jean-Claude Viau
+  email = jean-claude.viau@exfo.com
+[github]
+  user = jcviau
+[url "git@spmogit03.exfo.com:"]
+  insteadOf = gl:

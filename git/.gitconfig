@@ -1,0 +1,74 @@
+[core]
+    editor = gedit
+    # Convert CRLF to LF on commit but not the other way around
+    autocrlf = input
+    # Improve performance: https://news.ycombinator.com/item?id=11388479
+    untrackedCache = true
+    # see https://github.com/so-fancy/diff-so-fancy
+    pager = "diff-so-fancy | less --tabs=4 -RF"
+[color]
+    status = auto
+    branch = auto
+    interactive = auto
+    pager  = true
+    ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff]
+    # Use more time to create better diffs.
+    # E.g. matching opening/closing braces from neighbour functions.
+    algorithm = patience
+    # Git will detect copies, as well.
+    renames = copies
+    # Moved lines of code are colored differently
+    colorMoved = dimmed-zebra
+    tool = meld
+[difftool "meld"]
+    path = /usr/bin/meld
+# [difftool]
+#     prompt = false
+[merge]
+    ff = only 
+    tool = meld
+    conflictstyle = diff3
+[mergetool "meld"]
+    path = /usr/bin/meld
+# [mergetool]
+#     prompt = false
+[push]
+    # Make `git push` push relevant annotated tags when pushing branches out.
+    followTags = true
+[fetch]
+    # Before fetching, remove any remote-tracking references that no longer exist on the remote. 
+    prune = true
+[pull]
+    # Force a rebase on pull to avoid merge in the history
+    rebase = true
+[rebase]
+    # Use --autosquash by default. It's not like one would write !fixup message by accident.
+    autosquash = true
+    # Use --autostash when running git pull --rebase and when rebasing interactively
+    autoStash = true
+[rerere]
+    # Reuse recorded resolution of conflicted merges
+    enabled = true
+[help]
+    autocorrect = 1
+[grep]
+    lineNumber = true
+[include]
+    # Contains my user settings (username, email, github account)
+    path = .gitconfig.user
+[pager]
+    # Disable paging for `git branch`.
+    branch = false

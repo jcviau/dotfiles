@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -e
+
 git task-rebase
 
 currentBranch=$(git rev-parse --abbrev-ref HEAD)
