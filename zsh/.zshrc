@@ -19,7 +19,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load autojump
-[ -f /home/dev/.autojump/etc/profile.d/autojump.sh ] && source /home/dev/.autojump/etc/profile.d/autojump.sh
+[ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # Load plugin.
 source ~/zsh/.plugins.sh

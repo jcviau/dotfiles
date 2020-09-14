@@ -22,12 +22,15 @@ fonts_install() {
 apt_install() {
   if [ "$(uname)" = "Linux" ]; then
     echo "Step apt packages: Installing."
+    # Add repository that contains all python releases
+    sudo add-apt-repository -y ppa:deadsnakes/ppa
     sudo apt-get update
     # Essentials
     # bsdmainutils: column tool used in git-summary script
     # python-pygments: used by colorize plugin (cat with syntax colors)
     # less: used by cat alias
-    sudo apt-get -qq install curl unzip zsh python3.5 python-pygments less bsdmainutils
+    sudo apt-get -qq install curl unzip zsh python3.8 less bsdmainutils python3-pygments
+    sudo ln -s /usr/bin/python3 /usr/bin/python
     # Optional
     sudo apt-get -qq install htop xclip
     postStepInstall "apt packages"

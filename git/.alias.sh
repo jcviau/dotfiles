@@ -1,1 +1,1 @@
-alias groot="cd $(git rev-parse --show-toplevel)"
+alias groot="cd \$(git rev-parse --show-toplevel)"
