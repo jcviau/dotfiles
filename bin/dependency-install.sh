@@ -6,13 +6,13 @@ create_ssh() {
 }
 
 fonts_install() {
-  if ! [ -d ~/.local/share/fonts ]; then
+  if ! [ -d "$HOME"/.local/share/fonts ]; then
     echo "Step fonts: Installing."
-    mkdir -p ~/.local/share/fonts
+    mkdir -p "$HOME"/.local/share/fonts
     curl -fLo "roboto-mono.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip
-    unzip ~/tmp/roboto-mono.zip -d ~/tmp/roboto-mono
-    mv ~/tmp/roboto-mono/*Mono.ttf ~/.local/share/fonts/
-    mv ~/tmp/roboto-mono/*Complete.ttf ~/.local/share/fonts/
+    unzip "$HOME"/tmp/roboto-mono.zip -d "$HOME"/tmp/roboto-mono
+    mv "$HOME"/tmp/roboto-mono/*Mono.ttf "$HOME"/.local/share/fonts/
+    mv "$HOME"/tmp/roboto-mono/*Complete.ttf "$HOME"/.local/share/fonts/
     postStepInstall "fonts"
   else
     echo "Step fonts: Already installed"
@@ -30,7 +30,14 @@ apt_install() {
     # python-pygments: used by colorize plugin (cat with syntax colors)
     # less: used by cat alias
     sudo apt-get -qq install curl unzip zsh python3.8 less bsdmainutils python3-pygments
-    sudo ln -s /usr/bin/python3 /usr/bin/python
+
+    if ! [ -f /usr/bin/python ]; then
+      echo "Creating Python symlink"
+      sudo ln -s /usr/bin/python3 /usr/bin/python
+    else
+      echo "Python symlink: Already created"
+    fi
+
     # Optional
     sudo apt-get -qq install htop xclip
     postStepInstall "apt packages"
@@ -40,7 +47,7 @@ apt_install() {
 }
 
 oh_my_zsh_install() {
-  if ! [ -d "~/.oh-my-zsh" ]; then
+  if ! [ -d "$HOME"/.oh-my-zsh ]; then
     echo "Step oh-my-zsh: Installing."
     curl -fLo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     sh install.sh --unattended --keep-zshrc --skip-chsh
@@ -51,10 +58,10 @@ oh_my_zsh_install() {
 }
 
 fzf_install() {
-  if ! [ -f "~/.fzf.zsh" ]; then
+  if ! [ -f "$HOME"/.fzf.zsh ]; then
     echo "Step fzf: Installing."
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all --no-fish 
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME"/.fzf
+    "$HOME"/.fzf/install --all --no-fish 
     postStepInstall "fzf"
   else
     echo "Step fzf: Already installed"
@@ -62,13 +69,13 @@ fzf_install() {
 }
 
 exa_install() {
-  if ! [ -f "~/.local/bin/exa" ]; then
+  if ! [ -f "$HOME"/.local/bin/exa ]; then
     echo "Step exa: Installing."
     curl https://sh.rustup.rs -sSf | sh -s -- -q -y
     curl -fLo "exa-linux-x86_64.zip" https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip
     unzip exa-linux-x86_64.zip
-    mkdir -p ~/.local/bin
-    mv exa-linux-x86_64 ~/.local/bin/exa
+    mkdir -p "$HOME"/.local/bin
+    mv exa-linux-x86_64 "$HOME"/.local/bin/exa
     postStepInstall "exa"
   else
     echo "Step exa: Already installed"
@@ -76,7 +83,7 @@ exa_install() {
 }
 
 autojump_install() {
-  if ! [ -d "~/.autojump" ]; then
+  if ! [ -d "$HOME"/.autojump ]; then
     echo "Step autojump: Installing."
     git clone --depth=1 https://github.com/wting/autojump.git
     cd autojump
@@ -89,10 +96,10 @@ autojump_install() {
 }
 
 p10k_theme_install() {
-  if ! [ -d "~/zsh/custom/themes/powerlevel10k" ]; then
+  if ! [ -d "$HOME"/zsh/custom/themes/powerlevel10k ]; then
     echo "Step powerlevel10k theme: Installing."
-    mkdir -p ~/zsh/custom/themes
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/zsh/custom/themes/powerlevel10k
+    mkdir -p "$HOME"/zsh/custom/themes
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME"/zsh/custom/themes/powerlevel10k
     postStepInstall "powerlevel10k theme"
   else
     echo "Step powerlevel10k theme: Already installed"
@@ -114,8 +121,8 @@ postStepInstall() {
 install() {
   # Install from tmp folder
   # Required to fix issues when writting files under this clone in a dev container (file/directory not found & cwd issue)
-  mkdir -p ~/tmp
-  cd ~/tmp
+  mkdir -p "$HOME"/tmp
+  cd "$HOME"/tmp
 
   apt_install
   fonts_install
@@ -125,7 +132,7 @@ install() {
   fzf_install
   exa_install
 
-  rm -rf ~/tmp
+  rm -rf "$HOME"/tmp
 }
 
 create_ssh

@@ -31,7 +31,7 @@
     # Git will detect copies, as well.
     renames = copies
     # Moved lines of code are colored differently
-    colorMoved = dimmed-zebra
+    colorMoved = dimmed_zebra
     tool = meld
 [difftool "meld"]
     path = /usr/bin/meld
